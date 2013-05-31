@@ -1,0 +1,9 @@
+//in vec3 position;
+
+uniform mat4 modelviewprojection_matrix;
+
+void main()
+{
+	gl_Position = modelviewprojection_matrix * ftransform();
+}
+

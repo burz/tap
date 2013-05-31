@@ -1,0 +1,15 @@
+*.o
+
+# executables
+main
+programs/box
+programs/color_cube
+programs/move
+programs/tex_cube
+util/test_texture
+util/test_vertex_data
+
+# logs
+data/errors
+data/log
+

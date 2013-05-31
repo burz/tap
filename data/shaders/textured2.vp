@@ -1,0 +1,10 @@
+uniform mat4 modelviewprojection_matrix;
+
+varying vec2 coord;
+
+void main()
+{
+	coord = gl_MultiTexCoord0.st;
+	gl_Position = modelviewprojection_matrix * ftransform();
+}
+
