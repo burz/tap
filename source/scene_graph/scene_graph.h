@@ -7,14 +7,14 @@
 class Scene_graph
 {
 public:
-	Scene_graph();
-	~Scene_graph();
+  Scene_graph();
+  ~Scene_graph();
 
-	void add(Geometry *geometry);
-	void add(Scene_graph_node *node);
+  void add(Geometry *geometry);
+  void add(Scene_graph_node *node);
 
-	void render(const Camera &camera);
+  void render(const Camera &camera);
 private:
-	Scene_graph_node head;
+  Scene_graph_node head;
 };
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
 if [ "$1" = "-tv" ]; then
-	make test_vertex_data > /dev/null
-	./util/test_vertex_data $2
+  make test_vertex_data > /dev/null
+  ./util/test_vertex_data $2
 elif [ "$1" = "-tt" ]; then
-	make test_texture > /dev/null
-	./util/test_texture $2
+  make test_texture > /dev/null
+  ./util/test_texture $2
 else
-	make main > /dev/null
-	./main > data/log 2> data/errors
+  make main > /dev/null
+  ./main > data/log 2> data/errors
 fi
 

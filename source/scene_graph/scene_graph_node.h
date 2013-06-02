@@ -5,19 +5,19 @@
 
 class Scene_graph_node : public Spatial
 {
-	friend class Scene_graph;
+  friend class Scene_graph;
 public:
-	Scene_graph_node();
-	Scene_graph_node(Scene_graph_node *parent, const float *local_transformation);
-	~Scene_graph_node();
+  Scene_graph_node();
+  Scene_graph_node(Scene_graph_node *parent, const float *local_transformation);
+  ~Scene_graph_node();
 
-	void add_child(Spatial *child);
+  void add_child(Spatial *child);
 
-	virtual void cull_and_draw(const Camera &camera) const;
+  virtual void cull_and_draw(const Camera &camera) const;
 private:
-	int number_of_children;
-	int capacity;
+  int number_of_children;
+  int capacity;
 
-	Spatial **children;
+  Spatial **children;
 };
 

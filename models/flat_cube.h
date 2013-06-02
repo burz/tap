@@ -6,12 +6,12 @@
 class Flat_cube : public Flat
 {
 public:
-	Flat_cube( float *position, float *forward, float *up, float *color );
+  Flat_cube( float *position, float *forward, float *up, float *color );
 
-	virtual void load_vertices();
+  virtual void load_vertices();
 
-	virtual void draw();
+  virtual void draw();
 private:
-	static GLuint vertex_array;
+  static GLuint vertex_array;
 };
 

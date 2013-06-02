@@ -8,26 +8,26 @@ class Scene_graph_node;
 
 class Spatial
 {
-	friend class Scene_graph_node;
-	friend class Scene_graph;
+  friend class Scene_graph_node;
+  friend class Scene_graph;
 public:
-	Spatial();
-	Spatial(Scene_graph_node *parent, const float *local_transformation);
-	~Spatial();
+  Spatial();
+  Spatial(Scene_graph_node *parent, const float *local_transformation);
+  ~Spatial();
 
-	virtual void cull_and_draw(const Camera &camera) const = 0;
+  virtual void cull_and_draw(const Camera &camera) const = 0;
 
-	void get_local_transformation(float *destination) const;
-	const float *get_local_transformation() const;
-	void get_world_transformation(float *destination) const;
-	const float *get_world_transformation() const;
-	const Bounding_volume *get_world_bound() const;
+  void get_local_transformation(float *destination) const;
+  const float *get_local_transformation() const;
+  void get_world_transformation(float *destination) const;
+  const float *get_world_transformation() const;
+  const Bounding_volume *get_world_bound() const;
 protected:
-	Scene_graph_node *parent;
+  Scene_graph_node *parent;
 
-	Matrix4 local_transformation;
-	Matrix4 world_transformation;
+  Matrix4 local_transformation;
+  Matrix4 world_transformation;
 
-	Bounding_volume *world_bound;
+  Bounding_volume *world_bound;
 };
 

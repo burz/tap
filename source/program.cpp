@@ -10,34 +10,34 @@ const char default_name[] = "Program";
 
 Program::Program()
 {
-	strcpy(name, default_name);
+  strcpy(name, default_name);
 
-	window_width = DEFAULT_WINDOW_SIZE;
-	window_height = DEFAULT_WINDOW_SIZE;
+  window_width = DEFAULT_WINDOW_SIZE;
+  window_height = DEFAULT_WINDOW_SIZE;
 }
 
 Program::Program(char *name)
 {
-	strcpy(this->name, name);
+  strcpy(this->name, name);
 
-	window_width = DEFAULT_WINDOW_SIZE;
-	window_height = DEFAULT_WINDOW_SIZE;
+  window_width = DEFAULT_WINDOW_SIZE;
+  window_height = DEFAULT_WINDOW_SIZE;
 }
 
 Program::Program(int window_width, int window_height)
 {
-	strcpy(name, default_name);
+  strcpy(name, default_name);
 
-	this->window_width = window_width;
-	this->window_height = window_height;
+  this->window_width = window_width;
+  this->window_height = window_height;
 }
 
 Program::Program(char *name, int window_width, int window_height)
 {
-	strcpy(this->name, name);
+  strcpy(this->name, name);
 
-	this->window_width = window_width;
-	this->window_height = window_height;
+  this->window_width = window_width;
+  this->window_height = window_height;
 }
 
 void Program::start()
@@ -46,47 +46,47 @@ void Program::start()
 
 void Program::render_scene()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glutSwapBuffers();
+  glutSwapBuffers();
 }
 
 int Program::main(int argc, char *argv[])
 {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
-	glutInitWindowSize(window_width, window_height);
-	glutCreateWindow(name);
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
+  glutInitWindowSize(window_width, window_height);
+  glutCreateWindow(name);
 
-	glutDisplayFunc(&render_scene);
-	glutKeyboardFunc(&keyboard_handler);
-	glutSpecialFunc(&special_key_handler);
+  glutDisplayFunc(&render_scene);
+  glutKeyboardFunc(&keyboard_handler);
+  glutSpecialFunc(&special_key_handler);
 
 #ifndef __APPLE__
-	GLenum err = glewInit();
-	if(GLEW_OK != err) {
-		fprintf(stderr, "Glew Error: %s",  glewGetErrorString(err));
+  GLenum err = glewInit();
+  if(GLEW_OK != err) {
+    fprintf(stderr, "Glew Error: %s",  glewGetErrorString(err));
 
-		return 1;
-	}
+    return 1;
+  }
 #endif
 
-	start();
+  start();
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
+  glEnable(GL_DEPTH_TEST);
+  glEnable(GL_CULL_FACE);
 
-	glutMainLoop();
+  glutMainLoop();
 
-	return 0;
+  return 0;
 }
 
 void Program::keyboard_handler(unsigned char key, int x, int y)
 {
-	if(key == 0x1b)
-		exit(0);
+  if(key == 0x1b)
+    exit(0);
 }
 
 void Program::special_key_handler(int key, int x, int y)

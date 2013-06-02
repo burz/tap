@@ -6,18 +6,18 @@
 class Textured2_box : public Textured2
 {
 public:
-	Textured2_box();
-	Textured2_box( float *position, float *forward, float *up );
-	Textured2_box( float *position, float *forward, float *up, const char *file );
+  Textured2_box();
+  Textured2_box( float *position, float *forward, float *up );
+  Textured2_box( float *position, float *forward, float *up, const char *file );
 
-	virtual void load_vertices();
-	virtual void load_textures();
-	void load_textures( const char *file );
+  virtual void load_vertices();
+  virtual void load_textures();
+  void load_textures( const char *file );
 
-	virtual void draw();
+  virtual void draw();
 private:
-	static GLuint vertex_array;
+  static GLuint vertex_array;
 
-	GLenum texture;
+  GLenum texture;
 };
 
