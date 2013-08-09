@@ -13,7 +13,8 @@ Scene_graph_node::Scene_graph_node()
   capacity = DEFAULT_CAPACITY;
 }
 
-Scene_graph_node::Scene_graph_node(Scene_graph_node *parent, const float *local_transformation)
+Scene_graph_node::Scene_graph_node(Scene_graph_node *parent,
+                                   const float *local_transformation)
   : Spatial(parent, local_transformation)
 {
   number_of_children = 0;

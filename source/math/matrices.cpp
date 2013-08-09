@@ -19,7 +19,9 @@ void Math::scalar_multiply2(Matrix2 matrix, float scalar)
 
 float Math::determinant(const Matrix3 matrix)
 {
-  return matrix[0] * matrix[4] * matrix[8] + matrix[3] * matrix[7] * matrix[2] + matrix[6] * matrix[1] * matrix[5] - matrix[6] * matrix[4] * matrix[2] - matrix[3] * matrix[1] * matrix[8] - matrix[0] * matrix[7] * matrix[5];
+  return matrix[0] * matrix[4] * matrix[8] + matrix[3] * matrix[7] * matrix[2] +
+         matrix[6] * matrix[1] * matrix[5] - matrix[6] * matrix[4] * matrix[2] -
+         matrix[3] * matrix[1] * matrix[8] - matrix[0] * matrix[7] * matrix[5];
 }
 
 void Math::inverse(Matrix3 destination, const Matrix3 source)
@@ -73,22 +75,38 @@ void Math::scalar_multiply3(Matrix3 matrix, float scalar)
 
 void Math::multiply_matrices(Matrix4 destination, const Matrix4 left, const Matrix4 right)
 {
-  destination[0] = left[0] * right[0] + left[4] * right[1] + left[8] * right[2] + left[12] * right[3];
-  destination[1] = left[1] * right[0] + left[5] * right[1] + left[9] * right[2] + left[13] * right[3];
-  destination[2] = left[2] * right[0] + left[6] * right[1] + left[10] * right[2] + left[14] * right[3];
-  destination[3] = left[3] * right[0] + left[7] * right[1] + left[11] * right[2] + left[15] * right[3];
-  destination[4] = left[0] * right[4] + left[4] * right[5] + left[8] * right[6] + left[12] * right[7];
-  destination[5] = left[1] * right[4] + left[5] * right[5] + left[9] * right[6] + left[13] * right[7];
-  destination[6] = left[2] * right[4] + left[6] * right[5] + left[10] * right[6] + left[14] * right[7];
-  destination[7] = left[3] * right[4] + left[7] * right[5] + left[11] * right[6] + left[15] * right[7];
-  destination[8] = left[0] * right[8] + left[4] * right[9] + left[8] * right[10] + left[12] * right[11];
-  destination[9] = left[1] * right[8] + left[5] * right[9] + left[9] * right[10] + left[13] * right[11];
-  destination[10] = left[2] * right[8] + left[6] * right[9] + left[10] * right[10] + left[14] * right[11];
-  destination[11] = left[3] * right[8] + left[7] * right[9] + left[11] * right[10] + left[15] * right[11];
-  destination[12] = left[0] * right[12] + left[4] * right[13] + left[8] * right[14] + left[12] * right[15];
-  destination[13] = left[1] * right[12] + left[5] * right[13] + left[9] * right[14] + left[13] * right[15];
-  destination[14] = left[2] * right[12] + left[6] * right[13] + left[10] * right[14] + left[14] * right[15];
-  destination[15] = left[3] * right[12] + left[7] * right[13] + left[11] * right[14] + left[15] * right[15];
+  destination[0] = left[0] * right[0] + left[4] * right[1] +
+                   left[8] * right[2] + left[12] * right[3];
+  destination[1] = left[1] * right[0] + left[5] * right[1] +
+                   left[9] * right[2] + left[13] * right[3];
+  destination[2] = left[2] * right[0] + left[6] * right[1] +
+                   left[10] * right[2] + left[14] * right[3];
+  destination[3] = left[3] * right[0] + left[7] * right[1] +
+                   left[11] * right[2] + left[15] * right[3];
+  destination[4] = left[0] * right[4] + left[4] * right[5] +
+                   left[8] * right[6] + left[12] * right[7];
+  destination[5] = left[1] * right[4] + left[5] * right[5] +
+                   left[9] * right[6] + left[13] * right[7];
+  destination[6] = left[2] * right[4] + left[6] * right[5] +
+                   left[10] * right[6] + left[14] * right[7];
+  destination[7] = left[3] * right[4] + left[7] * right[5] +
+                   left[11] * right[6] + left[15] * right[7];
+  destination[8] = left[0] * right[8] + left[4] * right[9] +
+                   left[8] * right[10] + left[12] * right[11];
+  destination[9] = left[1] * right[8] + left[5] * right[9] +
+                   left[9] * right[10] + left[13] * right[11];
+  destination[10] = left[2] * right[8] + left[6] * right[9] +
+                    left[10] * right[10] + left[14] * right[11];
+  destination[11] = left[3] * right[8] + left[7] * right[9] +
+                    left[11] * right[10] + left[15] * right[11];
+  destination[12] = left[0] * right[12] + left[4] * right[13] +
+                    left[8] * right[14] + left[12] * right[15];
+  destination[13] = left[1] * right[12] + left[5] * right[13] +
+                    left[9] * right[14] + left[13] * right[15];
+  destination[14] = left[2] * right[12] + left[6] * right[13] +
+                    left[10] * right[14] + left[14] * right[15];
+  destination[15] = left[3] * right[12] + left[7] * right[13] +
+                    left[11] * right[14] + left[15] * right[15];
 }
 
 void Math::transpose4(Matrix4 destination, const Matrix4 source)
@@ -124,15 +142,18 @@ void Math::scalar_multiply4(Matrix4 matrix, float scalar)
 
 void Math::scale(Matrix4 destination, float factor)
 {
-  destination[1] = destination[2] = destination[3] = destination[4] = destination[6] = destination[7] = 0.0f;
-  destination[8] = destination[9] = destination[11] = destination[12] = destination[13] = destination[14] = 0.0f;
+  destination[1] = destination[2] = destination[3] = destination[4]
+                 = destination[6] = destination[7] = 0.0f;
+  destination[8] = destination[9] = destination[11] = destination[12]
+                 = destination[13] = destination[14] = 0.0f;
   destination[15] = 1.0f;
   destination[0] = destination[5] = destination[10] = factor;
 }
 
 void Math::translate(Matrix4 destination, const Vector3 translation)
 {
-  destination[1] = destination[2] = destination[3] = destination[4] = destination[6] = destination[7] = 0.0f;
+  destination[1] = destination[2] = destination[3] = destination[4]
+                 = destination[6] = destination[7] = 0.0f;
   destination[8] = destination[9] = destination[11] = 0.0f;
   destination[0] = destination[5] = destination[10] = destination[15] = 1.0f;
   destination[12] = translation[0];
@@ -142,8 +163,10 @@ void Math::translate(Matrix4 destination, const Vector3 translation)
 
 void Math::x_rotate(Matrix4 destination, float angle)
 {
-  destination[1] = destination[2] = destination[3] = destination[4] = destination[7] = 0.0f;
-  destination[8] = destination[11] = destination[12] = destination[13] = destination[14] = 0.0f;
+  destination[1] = destination[2] = destination[3] = destination[4]
+                 = destination[7] = 0.0f;
+  destination[8] = destination[11] = destination[12]
+                 = destination[13] = destination[14] = 0.0f;
   destination[0] = destination[15] = 1.0f;
   destination[5] = destination[10] = cos(angle);
   destination[6] = sin(angle);
@@ -152,8 +175,10 @@ void Math::x_rotate(Matrix4 destination, float angle)
 
 void Math::y_rotate(Matrix4 destination, float angle)
 {
-  destination[1] = destination[3] = destination[4] = destination[6] = destination[7] = 0.0f;
-  destination[9] = destination[11] = destination[12] = destination[13] = destination[14] = 0.0f;
+  destination[1] = destination[3] = destination[4] = destination[6]
+                 = destination[7] = 0.0f;
+  destination[9] = destination[11] = destination[12] = destination[13]
+                 = destination[14] = 0.0f;
   destination[5] = destination[15] = 1.0f;
   destination[0] = destination[10] = cos(angle);
   destination[8] = sin(angle);
@@ -162,8 +187,10 @@ void Math::y_rotate(Matrix4 destination, float angle)
 
 void Math::z_rotate(Matrix4 destination, float angle)
 {
-  destination[2] = destination[3] = destination[6] = destination[7] = destination[8] = 0.0f;
-  destination[9] = destination[11] = destination[12] = destination[13] = destination[14] = 0.0f;
+  destination[2] = destination[3] = destination[6] = destination[7]
+                 = destination[8] = 0.0f;
+  destination[9] = destination[11] = destination[12] = destination[13]
+                 = destination[14] = 0.0f;
   destination[10] = destination[15] = 1.0f;
   destination[0] = destination[5] = cos(angle);
   destination[1] = sin(angle);

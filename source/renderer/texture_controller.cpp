@@ -19,7 +19,8 @@ Texture_controller::Texture_controller()
   next_free_texture = 0;
 
 #ifndef __APPLE__
-  glActiveTexture = (PFNGLACTIVETEXTUREPROC) glXGetProcAddress((const GLubyte *) "glActiveTexture");
+  glActiveTexture = (PFNGLACTIVETEXTUREPROC) glXGetProcAddress(
+                                                    (const GLubyte *) "glActiveTexture");
 #endif
 
   if(glActiveTexture == NULL)  {
@@ -46,7 +47,8 @@ Texture_controller::~Texture_controller()
   }
 }
 
-GLenum Texture_controller::load_texture2(const char *file, GLenum min_filter, GLenum mag_filter, GLenum wrap_mode)
+GLenum Texture_controller::load_texture2(const char *file, GLenum min_filter,
+                                         GLenum mag_filter, GLenum wrap_mode)
 {
   texture_record record;
 
@@ -59,7 +61,8 @@ GLenum Texture_controller::load_texture2(const char *file, GLenum min_filter, GL
 
   void *data;
 
-  read_bit_field_file(file, &width, &height, NULL, &internal_format, &format, &type, &data);
+  read_bit_field_file(file, &width, &height, NULL, &internal_format, &format, &type,
+                      &data);
 
   GLenum error;
     if((error = glGetError()) != GL_NO_ERROR)  {
@@ -93,7 +96,8 @@ GLenum Texture_controller::load_texture2(const char *file, GLenum min_filter, GL
 
   free(data);
 
-  if(min_filter == GL_LINEAR_MIPMAP_LINEAR || min_filter == GL_LINEAR_MIPMAP_NEAREST || min_filter == GL_NEAREST_MIPMAP_LINEAR || min_filter == GL_NEAREST_MIPMAP_NEAREST)
+  if(min_filter == GL_LINEAR_MIPMAP_LINEAR || min_filter == GL_LINEAR_MIPMAP_NEAREST ||
+     min_filter == GL_NEAREST_MIPMAP_LINEAR || min_filter == GL_NEAREST_MIPMAP_NEAREST)
     glGenerateMipmap(GL_TEXTURE_2D);
 
   loaded_files.add(file, record);

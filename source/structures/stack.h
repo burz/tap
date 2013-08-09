@@ -109,3 +109,4 @@ int Stack< T >::get_size() const
 {
   return size;
 }
+

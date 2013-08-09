@@ -18,7 +18,8 @@ public:
   Texture_controller();
   ~Texture_controller();
 
-  GLenum load_texture2(const char *file, GLenum min_filter, GLenum mag_filter, GLenum wrap_mode);
+  GLenum load_texture2(const char *file, GLenum min_filter, GLenum mag_filter,
+                       GLenum wrap_mode);
 
   void delete_texture(const char *file);
 

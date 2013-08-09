@@ -18,7 +18,8 @@ Shader_controller::Shader_controller()
 
 Shader_controller::~Shader_controller()
 {
-  Hash_table_iterator<program_contents, program_record> iterator = loaded_programs.get_iterator();
+  Hash_table_iterator<program_contents, program_record> iterator =
+                                                        loaded_programs.get_iterator();
 
   program_record record;
 
@@ -48,7 +49,8 @@ GLuint Shader_controller::load_shaders_from_file(const char *vertex_file, const 
   record.fragment_shader = compile_shader(fragment_file, GL_FRAGMENT_SHADER);
 
   if(record.vertex_shader == 0 || record.fragment_shader == 0)  {
-    fprintf(stderr, "The program comprised of %s and %s failed to compile\n", vertex_file, fragment_file);
+    fprintf(stderr, "The program comprised of %s and %s failed to compile\n",
+                                                          vertex_file, fragment_file);
 
     exit(1);
   }
@@ -188,7 +190,8 @@ bool load_source_file(char *destination, const char *file)
     shader_length++;
 
   if(shader_length > MAX_SHADER_LENGTH)  {
-    fprintf(stderr, "Shader source at %s is larger than the maximum allowed size: %i", file, MAX_SHADER_LENGTH);
+    fprintf(stderr, "Shader source at %s is larger than the maximum allowed size: %i",
+                                                                file, MAX_SHADER_LENGTH);
 
     fclose(f);
 
@@ -214,6 +217,7 @@ int program_contents_hash(program_contents contents)
 
 int program_contents_compare_to(program_contents a, program_contents b)
 {
-  return string_compare_to(a.vertex_file, b.vertex_file) == 0 && string_compare_to(a.fragment_file, b.fragment_file) == 0;
+  return string_compare_to(a.vertex_file, b.vertex_file) == 0 &&
+                              string_compare_to(a.fragment_file, b.fragment_file) == 0;
 }
 

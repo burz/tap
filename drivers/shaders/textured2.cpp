@@ -25,9 +25,11 @@ void Textured2::load_uniforms()
 {
   Matrix4 modelviewprojection_matrix;
 
-  Math::multiply_matrices(modelviewprojection_matrix, projection_stack.top_matrix(), modelview_stack.top_matrix());
+  Math::multiply_matrices(modelviewprojection_matrix, projection_stack.top_matrix(),
+                          modelview_stack.top_matrix());
 
-  glUniformMatrix4fv(modelviewprojection_location, 1, GL_FALSE, modelviewprojection_matrix);
+  glUniformMatrix4fv(modelviewprojection_location, 1, GL_FALSE,
+                     modelviewprojection_matrix);
 }
 
 void Textured2::load_shaders()
@@ -35,12 +37,14 @@ void Textured2::load_shaders()
   if(shader != 0)
     return;
 
-  shader = shader_controller.load_shaders_from_file("data/shaders/textured2.vp", "data/shaders/textured2.fp");
+  shader = shader_controller.load_shaders_from_file("data/shaders/textured2.vp",
+                                                    "data/shaders/textured2.fp");
 
   glBindAttribLocation(shader, 0, "position");
   glBindAttribLocation(shader, 1, "texture_coordinates");
 
-  modelviewprojection_location = glGetUniformLocation(shader, "modelviewprojection_matrix");
+  modelviewprojection_location = glGetUniformLocation(shader,
+                                                      "modelviewprojection_matrix");
   texture_location = glGetUniformLocation(shader, "tex");
 }
 

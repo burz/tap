@@ -26,7 +26,8 @@ typedef struct {
   GLenum draw_mode;
 } VDF_HEADER;
 
-void create_vertex_data_file(const char *destination, int number_of_arrays, int number_of_vertices, GLenum draw_mode, ...)
+void create_vertex_data_file(const char *destination, int number_of_arrays,
+                             int number_of_vertices, GLenum draw_mode, ...)
 {
   size_t sizes[number_of_arrays];
   GLenum types[number_of_arrays];
@@ -48,10 +49,15 @@ void create_vertex_data_file(const char *destination, int number_of_arrays, int 
 
   va_end(arrays);
 
-  create_vertex_data_file_arrays(destination, number_of_arrays, number_of_vertices, draw_mode, sizes, types, components, attribute_locations, data);
+  create_vertex_data_file_arrays(destination, number_of_arrays, number_of_vertices,
+                                 draw_mode, sizes, types, components,
+                                 attribute_locations, data);
 }
 
-void create_vertex_data_file_arrays(const char *destination, int number_of_arrays, int number_of_vertices, GLenum draw_mode, size_t *sizes, GLenum *types, int *components, int *attribute_locations, void **data)
+void create_vertex_data_file_arrays(const char *destination, int number_of_arrays,
+                                    int number_of_vertices, GLenum draw_mode,
+                                    size_t *sizes, GLenum *types, int *components,
+                                    int *attribute_locations, void **data)
 {
   FILE *file = fopen(destination, "w+b");
   if(file == NULL)  {
@@ -102,7 +108,9 @@ void create_vertex_data_file_arrays(const char *destination, int number_of_array
   fclose(file);
 }
 
-void **read_vertex_data_file(const char *vertex_data_file, int *number_of_arrays, int *number_of_vertices, GLenum *draw_mode, size_t **sizes, GLenum **types, int **components, int **attribute_locations)
+void **read_vertex_data_file(const char *vertex_data_file, int *number_of_arrays,
+                             int *number_of_vertices, GLenum *draw_mode, size_t **sizes,
+                             GLenum **types, int **components, int **attribute_locations)
 {
   FILE *file = fopen(vertex_data_file, "rb");
   if(file == NULL)  {
@@ -114,7 +122,8 @@ void **read_vertex_data_file(const char *vertex_data_file, int *number_of_arrays
   VDF_HEADER header;
 
   if(fread(&header, sizeof(VDF_HEADER), 1, file) != 1)  {
-    fprintf(stderr, "Could not read the vertex data file header from: %s\n", vertex_data_file);
+    fprintf(stderr, "Could not read the vertex data file header from: %s\n",
+                                                                   vertex_data_file);
 
     exit(1);
   }
@@ -161,7 +170,8 @@ void **read_vertex_data_file(const char *vertex_data_file, int *number_of_arrays
     exit(1);
   }
   if(fread(*attribute_locations, sizeof(int) * header.number_of_arrays, 1, file) != 1)  {
-    fprintf(stderr, "Could not read the attribute location data from: %s\n", vertex_data_file);
+    fprintf(stderr, "Could not read the attribute location data from: %s\n",
+                                                                      vertex_data_file);
 
     free(*sizes);
     free(*types);
@@ -189,8 +199,10 @@ void **read_vertex_data_file(const char *vertex_data_file, int *number_of_arrays
       exit(1);
     }
 
-    if(fread(data[i], (*sizes)[i] * (*components)[i] * header.number_of_vertices, 1, file) != 1)  {
-      fprintf(stderr, "Could not read the data from array %i in %s\n", i, vertex_data_file);
+    if(fread(data[i], (*sizes)[i] * (*components)[i] * header.number_of_vertices, 1,
+                                                                        file) != 1)  {
+      fprintf(stderr, "Could not read the data from array %i in %s\n", i,
+                                                                    vertex_data_file);
 
       for(int j = 0; j < i; j++)
         free(data[j]);

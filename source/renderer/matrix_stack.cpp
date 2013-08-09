@@ -138,9 +138,9 @@ void Matrix_stack::translate(float x, float y, float z)
   Vector3 vector;
   Matrix4 matrix, result;
 
-  vector[ 0 ] = x;
-  vector[ 1 ] = y;
-  vector[ 2 ] = z;
+  vector[0] = x;
+  vector[1] = y;
+  vector[2] = z;
 
   Math::translate(matrix, vector);
 
@@ -168,7 +168,8 @@ void Matrix_stack::perspective(float right, float top, float near, float far)
   left_multiply(matrix);
 }
 
-void Matrix_stack::perspective(float left, float right, float bottom, float top, float near, float far)
+void Matrix_stack::perspective(float left, float right, float bottom, float top,
+                               float near, float far)
 {
   Matrix4 matrix;
 
@@ -179,9 +180,9 @@ void Matrix_stack::perspective(float left, float right, float bottom, float top,
 
 void Matrix_stack::get_normal_matrix(Matrix3 destination)
 {
-  Matrix3 matrix = { head.next->matrix[ 0 ], head.next->matrix[ 1 ], head.next->matrix[ 2 ],
-             head.next->matrix[ 4 ], head.next->matrix[ 5 ], head.next->matrix[ 6 ],
-             head.next->matrix[ 8 ], head.next->matrix[ 9 ], head.next->matrix[ 10 ] };
+  Matrix3 matrix = { head.next->matrix[0], head.next->matrix[1], head.next->matrix[2],
+             head.next->matrix[4], head.next->matrix[5], head.next->matrix[6],
+             head.next->matrix[8], head.next->matrix[9], head.next->matrix[10] };
 
   Math::inverse(destination, matrix);
   Math::transpose3(destination);

@@ -12,7 +12,9 @@ typedef struct {
   int components;
 } ADF_HEADER;
 
-void create_array_data_file(const char *destination, const void *data, int number_of_vertices, size_t size, GLenum type, int components)
+void create_array_data_file(const char *destination, const void *data,
+                            int number_of_vertices, size_t size, GLenum type,
+                            int components)
 {
   ADF_HEADER header;
 
@@ -43,7 +45,8 @@ void create_array_data_file(const char *destination, const void *data, int numbe
   fclose(file);
 }
 
-void read_array_data_file(const char *source, void **data, int *number_of_vertices, size_t *size, GLenum *type, int *components)
+void read_array_data_file(const char *source, void **data, int *number_of_vertices,
+                          size_t *size, GLenum *type, int *components)
 {
   FILE *file = fopen(source, "rb");
   if(file == NULL)  {
@@ -72,7 +75,8 @@ void read_array_data_file(const char *source, void **data, int *number_of_vertic
     exit(1);
   }
 
-  if(fread(*data, header.size * header.components * header.number_of_vertices, 1, file) != 1)  {
+  if(fread(*data, header.size * header.components * header.number_of_vertices,
+       1, file) != 1)  {
     fprintf(stderr, "Could not read data from %s\n", source);
 
     exit(1);
@@ -81,7 +85,8 @@ void read_array_data_file(const char *source, void **data, int *number_of_vertic
   fclose(file);
 }
 
-void create_VDF_from_ADFs(const char *destination, int number_of_arrays, GLenum draw_mode, ...)
+void create_VDF_from_ADFs(const char *destination, int number_of_arrays,
+                          GLenum draw_mode, ...)
 {
   int attribute_locations[number_of_arrays];
   const char *files[number_of_arrays];
@@ -121,7 +126,9 @@ void create_VDF_from_ADFs(const char *destination, int number_of_arrays, GLenum 
     }
   }
 
-  create_vertex_data_file_arrays(destination, number_of_arrays, number_of_vertices, draw_mode, sizes, types, components, attribute_locations, data);
+  create_vertex_data_file_arrays(destination, number_of_arrays, number_of_vertices,
+                                 draw_mode, sizes, types, components,
+                                 attribute_locations, data);
 
   for(int i = 0; i < number_of_arrays; i++)
     if(data[i] != NULL)

@@ -33,11 +33,13 @@ void Flat::load_shaders()
   if(shader != 0)
     return;
 
-  shader = shader_controller.load_shaders_from_file("data/shaders/flat.vp", "data/shaders/flat.fp");
+  shader = shader_controller.load_shaders_from_file("data/shaders/flat.vp",
+                                                    "data/shaders/flat.fp");
 
   glBindAttribLocation(shader, 0, "position");
 
-  modelviewprojection_location = glGetUniformLocation(shader, "modelviewprojection_matrix");
+  modelviewprojection_location = glGetUniformLocation(shader,
+                                                      "modelviewprojection_matrix");
   color_location = glGetUniformLocation(shader, "color");
 }
 
@@ -45,9 +47,11 @@ void Flat::load_uniforms()
 {
   Matrix4 modelviewprojection_matrix;
 
-  Math::multiply_matrices(modelviewprojection_matrix, projection_stack.top_matrix(), modelview_stack.top_matrix());
+  Math::multiply_matrices(modelviewprojection_matrix, projection_stack.top_matrix(),
+                          modelview_stack.top_matrix());
 
-  glUniformMatrix4fv(modelviewprojection_location, 1, GL_FALSE, modelviewprojection_matrix);
+  glUniformMatrix4fv(modelviewprojection_location, 1, GL_FALSE,
+                     modelviewprojection_matrix);
 
   glUniform4fv(color_location, 1, color);
 }

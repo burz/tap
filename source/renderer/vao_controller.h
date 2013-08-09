@@ -17,7 +17,8 @@ public:
   VAO_controller();
   ~VAO_controller();
 
-  GLuint create_vertex_array(const char *vertex_data_file, int *number_of_vertices = 0, GLenum *draw_mode = 0);
+  GLuint create_vertex_array(const char *vertex_data_file, int *number_of_vertices = 0,
+                             GLenum *draw_mode = 0);
 
   void delete_vertex_array(const char *file);
 private:

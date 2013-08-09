@@ -25,7 +25,8 @@ class Hash_table
 {
 public:
   Hash_table(int (*hash_function)(K key), int (*compare_to)(K key1, K key2));
-  Hash_table(int (*hash_function)(K key), int (*compare_to)(K key1, K key2), int initial_size);
+  Hash_table(int (*hash_function)(K key), int (*compare_to)(K key1, K key2),
+             int initial_size);
   ~Hash_table();
 
   void add(K key, D data);
@@ -73,7 +74,8 @@ Hash_node<K, D>::Hash_node(K key, D data)
 }
 
 template <typename K, typename D>
-Hash_table<K, D>::Hash_table(int (*hash_function)(K key), int (*compare_to)(K key1, K key2))
+Hash_table<K, D>::Hash_table(int (*hash_function)(K key),
+                             int (*compare_to)(K key1, K key2))
   : hash_function(hash_function), compare_to(compare_to)
 {
   size = 0;
@@ -84,7 +86,8 @@ Hash_table<K, D>::Hash_table(int (*hash_function)(K key), int (*compare_to)(K ke
 }
 
 template <typename K, typename D>
-Hash_table<K, D>::Hash_table(int (*hash_function)(K key), int (*compare_to)(K key1, K key2), int initial_size)
+Hash_table<K, D>::Hash_table(int (*hash_function)(K key),
+                             int (*compare_to)(K key1, K key2), int initial_size)
   : hash_function(hash_function), compare_to(compare_to)
 {
   size = 0;
@@ -219,3 +222,4 @@ bool Hash_table_iterator<K, D>::next(D *data)
 
   return true;
 }
+

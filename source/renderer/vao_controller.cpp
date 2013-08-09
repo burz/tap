@@ -33,7 +33,8 @@ VAO_controller::~VAO_controller()
   }
 }
 
-GLuint VAO_controller::create_vertex_array(const char *vertex_data_file, int *number_of_vertices, GLenum *draw_mode)
+GLuint VAO_controller::create_vertex_array(const char *vertex_data_file,
+                                           int *number_of_vertices, GLenum *draw_mode)
 {
   array_record record;
 
@@ -50,7 +51,9 @@ GLuint VAO_controller::create_vertex_array(const char *vertex_data_file, int *nu
   GLenum *types;
   int *components, *attribute_locations;
 
-  void **data = read_vertex_data_file(vertex_data_file, &record.number_of_arrays, &record.number_of_vertices, &record.draw_mode, &sizes, &types, &components, &attribute_locations);
+  void **data = read_vertex_data_file(vertex_data_file, &record.number_of_arrays,
+                                      &record.number_of_vertices, &record.draw_mode,
+                                      &sizes, &types, &components, &attribute_locations);
 
   record.handle = 0;
 
@@ -84,10 +87,12 @@ GLuint VAO_controller::create_vertex_array(const char *vertex_data_file, int *nu
 
   for(int i = 0; i < record.number_of_arrays; i++)  {
     glBindBuffer(GL_ARRAY_BUFFER, record.buffers[i]);
-    glBufferData(GL_ARRAY_BUFFER, sizes[i] * components[i] * record.number_of_vertices, data[i], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizes[i] * components[i] * record.number_of_vertices,
+                 data[i], GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(attribute_locations[i]);
-    glVertexAttribPointer(attribute_locations[i], components[i], types[i], GL_FALSE, 0, (const GLvoid *) 0);
+    glVertexAttribPointer(attribute_locations[i], components[i], types[i], GL_FALSE, 0,
+                          (const GLvoid *) 0);
   }
 
 #ifdef __APPLE__

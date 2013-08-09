@@ -13,7 +13,9 @@ Diffuse_cube::Diffuse_cube()
 {
 }
 
-Diffuse_cube::Diffuse_cube(float *position, float *forward, float *up, float *light_position, float *light_intensity, float *diffuse_reflectivity)
+Diffuse_cube::Diffuse_cube(float *position, float *forward, float *up,
+                           float *light_position, float *light_intensity,
+                           float *diffuse_reflectivity)
   : Diffuse(position, forward, up, light_position, light_intensity, diffuse_reflectivity)
 {
 }

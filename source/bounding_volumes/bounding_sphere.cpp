@@ -27,7 +27,8 @@ Bounding_sphere::Bounding_sphere(const Vector3 position, float radius)
 
 bool Bounding_sphere::test_volume_intersection(const Bounding_volume *volume) const
 {
-  if(Math::abs(position, volume->get_position()) <= radius + ((Bounding_sphere *) volume)->radius)
+  if(Math::abs(position, volume->get_position()) <= radius +
+                                                  ((Bounding_sphere *) volume)->radius)
     return true;
   else
     return false;
@@ -35,7 +36,8 @@ bool Bounding_sphere::test_volume_intersection(const Bounding_volume *volume) co
 
 bool Bounding_sphere::grow_to_contain(const Bounding_volume *volume)
 {
-  float new_radius = Math::abs(position, volume->get_position()) + ((Bounding_sphere *) volume)->radius;
+  float new_radius = Math::abs(position, volume->get_position()) +
+                                                  ((Bounding_sphere *) volume)->radius;
 
   if(new_radius > radius) {
     radius = new_radius;

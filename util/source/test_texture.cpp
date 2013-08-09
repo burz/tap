@@ -22,7 +22,8 @@ void test_texture(const char *file)
 
   void *data;
 
-  read_bit_field_file(file, &width, &height, &type_size, &internal_format, &format, &type, &data);
+  read_bit_field_file(file, &width, &height, &type_size, &internal_format, &format,
+                      &type, &data);
 
   printf("Testing: %s\n*************************************\n", file);
   printf("Width: %i\n", width);

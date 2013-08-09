@@ -39,7 +39,8 @@ public:
   void rotate(float x_angle, float y_angle, float z_angle);
 
   void perspective(float right, float top, float near, float far);
-  void perspective(float left, float right, float bottom, float top, float near, float far);
+  void perspective(float left, float right, float bottom, float top,
+                   float near, float far);
 
   void get_normal_matrix(Matrix3 destination);
 private:

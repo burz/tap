@@ -8,9 +8,11 @@ class Camera
 public:
   Camera();
   Camera(const Vector3 position, const Vector3 forward, const Vector3 up);
-  Camera(const Vector3 position, const Vector3 forward, const Vector3 up, float right, float top, float near, float far);
+  Camera(const Vector3 position, const Vector3 forward, const Vector3 up,
+         float right, float top, float near, float far);
   Camera(float right, float top, float near, float far);
-  Camera(const Vector3 position, const Vector3 forward, const Vector3 up, float left, float right, float bottom, float top, float near, float far);
+  Camera(const Vector3 position, const Vector3 forward, const Vector3 up,
+         float left, float right, float bottom, float top, float near, float far);
   Camera(float left, float right, float bottom, float top, float near, float far);
 
   void set_position(const Vector3 position);

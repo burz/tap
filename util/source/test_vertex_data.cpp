@@ -22,7 +22,9 @@ void test_vertex_data_file( const char *vertex_data_file )
   GLenum *types;
   int *components, *attribute_locations;
 
-  void **data = read_vertex_data_file( vertex_data_file, &number_of_arrays, &number_of_vertices, &draw_mode, &sizes, &types, &components, &attribute_locations );
+  void **data = read_vertex_data_file(vertex_data_file, &number_of_arrays,
+                                      &number_of_vertices, &draw_mode, &sizes, &types,
+                                      &components, &attribute_locations );
 
   printf( "Testing file: %s\n*************************************\n", vertex_data_file );
   printf( "Number of Arrays: %i\n", number_of_arrays );
@@ -71,3 +73,4 @@ void test_vertex_data_file( const char *vertex_data_file )
   free( components );
   free( attribute_locations );
 }
+

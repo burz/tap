@@ -34,7 +34,8 @@ void Textured2_box::load_vertices()
 
 void Textured2_box::load_textures()
 {
-  texture = texture_controller.load_texture2("data/textures/scene20011.bf", GL_NEAREST, GL_NEAREST, GL_CLAMP);
+  texture = texture_controller.load_texture2("data/textures/scene20011.bf", GL_NEAREST,
+                                             GL_NEAREST, GL_CLAMP);
 }
 
 void Textured2_box::load_textures(const char *file)

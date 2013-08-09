@@ -4,7 +4,8 @@
 #include "camera.h"
 #include "math/math.h"
 
-float needed_radius(float left, float right, float bottom, float top, float near, float far);
+float needed_radius(float left, float right, float bottom, float top,
+                    float near, float far);
 
 Camera::Camera()
   : bounds(9.0)
@@ -30,7 +31,8 @@ Camera::Camera(const Vector3 position, const Vector3 forward, const Vector3 up)
   Math::symmetric_perspective_projection(projection_matrix, 5.0f, 5.0f, 0.1f, 20.0f);
 }
 
-Camera::Camera(const Vector3 position, const Vector3 forward, const Vector3 up, float right, float top, float near, float far)
+Camera::Camera(const Vector3 position, const Vector3 forward, const Vector3 up,
+               float right, float top, float near, float far)
   : bounds(position, needed_radius(right, right, top, top, near, far))
 {
   set_position(position);
@@ -54,7 +56,8 @@ Camera::Camera(float right, float top, float near, float far)
   Math::symmetric_perspective_projection(projection_matrix, right, top, near, far);
 }
 
-Camera::Camera(const Vector3 position, const Vector3 forward, const Vector3 up, float left, float right, float bottom, float top, float near, float far)
+Camera::Camera(const Vector3 position, const Vector3 forward, const Vector3 up,
+               float left, float right, float bottom, float top, float near, float far)
   : bounds(position, needed_radius(left, right, bottom, top, near, far))
 {
   set_position(position);
@@ -137,9 +140,11 @@ void Camera::get_view_matrix(Matrix4 destination) const
   destination[9] = up[2];
   destination[10] = forward[2];
   destination[11] = 0.0f;
-  destination[12] = -position[0] * cross[0] - position[1] * cross[1] - position[2] * cross[2];
+  destination[12] = -position[0] * cross[0] - position[1] * cross[1] -
+                                                                position[2] * cross[2];
   destination[13] = -position[0] * up[0] - position[1] * up[1] - position[2] * up[2];
-  destination[14] = -position[0] * forward[0] - position[1] * forward[1] - position[2] * forward[2];
+  destination[14] = -position[0] * forward[0] - position[1] * forward[1] -
+                                                              position[2] * forward[2];
   destination[15] = 1.0f;
 }
 
@@ -153,8 +158,10 @@ bool Camera::is_culled(const Bounding_volume *volume) const
   return !bounds.test_volume_intersection(volume);
 }
 
-float needed_radius(float left, float right, float bottom, float top, float near, float far)
+float needed_radius(float left, float right, float bottom, float top,
+                    float near, float far)
 {
-  return sqrt(fmax(left, right) * fmax(left, right) + fmax(bottom, top) * fmax(bottom, top) + fmax(near, far) * fmax(near, far));
+  return sqrt(fmax(left, right) * fmax(left, right) + fmax(bottom, top) *
+              fmax(bottom, top) + fmax(near, far) * fmax(near, far));
 }
 

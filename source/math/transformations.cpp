@@ -1,7 +1,8 @@
 #include "transformations.h"
 #include "matrices.h"
 
-void Math::perspective_projection(Matrix4 destination, float left, float right, float bottom, float top, float near, float far)
+void Math::perspective_projection(Matrix4 destination, float left, float right,
+                                  float bottom, float top, float near, float far)
 {
   destination[0] = 2.0f * near / (right - left);
   destination[1] = 0.0f;
@@ -22,7 +23,8 @@ void Math::perspective_projection(Matrix4 destination, float left, float right, 
 
 }
 
-void Math::symmetric_perspective_projection(Matrix4 destination, float right, float top, float near, float far)
+void Math::symmetric_perspective_projection(Matrix4 destination, float right, float top,
+                                            float near, float far)
 {
   destination[0] = near / right;
   destination[1] = 0.0f;

@@ -34,7 +34,8 @@ Diffuse::Diffuse()
   diffuse_reflectivity[2] = 0.75f;
 }
 
-Diffuse::Diffuse(float *position, float *forward, float *up, float *light_position, float *light_intensity, float *diffuse_reflectivity)
+Diffuse::Diffuse(float *position, float *forward, float *up, float *light_position,
+                 float *light_intensity, float *diffuse_reflectivity)
   : Shader_driver(position, forward, up)
 {
   memcpy(this->light_position, light_position, sizeof(float) * 3);
@@ -47,7 +48,8 @@ void Diffuse::load_shaders()
   if(shader != 0)
     return;
 
-  shader = shader_controller.load_shaders_from_file("data/shaders/diffuse.vp", "data/shaders/diffuse.fp");
+  shader = shader_controller.load_shaders_from_file("data/shaders/diffuse.vp",
+                                                    "data/shaders/diffuse.fp");
 
   glBindAttribLocation(shader, 0, "position");
   glBindAttribLocation(shader, 1, "normal");
@@ -59,7 +61,8 @@ void Diffuse::load_shaders()
   modelview_location = glGetUniformLocation(shader, "modelview_matrix");
   normal_matrix_location = glGetUniformLocation(shader, "normal_matrix");
   projection_location = glGetUniformLocation(shader, "projection_matrix");
-  modelviewprojection_location = glGetUniformLocation(shader, "modelviewprojection_matrix");
+  modelviewprojection_location = glGetUniformLocation(shader,
+                                                      "modelviewprojection_matrix");
 }
 
 void Diffuse::load_uniforms()
@@ -77,7 +80,8 @@ void Diffuse::load_uniforms()
   glUniformMatrix3fv(normal_matrix_location, 1, GL_FALSE, matrix);
   glUniformMatrix4fv(projection_location, 1, GL_FALSE, projection_stack.top_matrix());
 
-  Math::multiply_matrices(matrix, projection_stack.top_matrix(), modelview_stack.top_matrix());
+  Math::multiply_matrices(matrix, projection_stack.top_matrix(),
+                          modelview_stack.top_matrix());
 
   glUniformMatrix4fv(modelviewprojection_location, 1, GL_FALSE, matrix);
 }

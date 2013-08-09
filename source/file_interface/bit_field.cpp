@@ -12,7 +12,9 @@ typedef struct {
   GLenum type;
 } BF_HEADER;
 
-void create_bit_field_file(const char *destination, unsigned short width, unsigned short height, size_t type_size, GLint internal_format, GLenum format, GLenum type, void *data)
+void create_bit_field_file(const char *destination, unsigned short width,
+                           unsigned short height, size_t type_size,
+                           GLint internal_format, GLenum format, GLenum type, void *data)
 {
   BF_HEADER header;
 
@@ -45,7 +47,10 @@ void create_bit_field_file(const char *destination, unsigned short width, unsign
   fclose( file );
 }
 
-void read_bit_field_file(const char *source, unsigned short *width, unsigned short *height, size_t *type_size, GLint *internal_format, GLenum *format, GLenum *type, void **data)
+void read_bit_field_file(const char *source, unsigned short *width,
+                         unsigned short *height, size_t *type_size,
+                         GLint *internal_format, GLenum *format, GLenum *type,
+                         void **data)
 {
   FILE *file = fopen(source, "rb");
   if(file == NULL)  {
