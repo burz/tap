@@ -14,7 +14,7 @@ public:
   void get_position(Vector3 destination) const;
   void get_normal(Vector3 destination) const;
 protected:
-  float position[ 3 ];
-  float normal[ 3 ];
+  float position[3];
+  float normal[3];
 };
 

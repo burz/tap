@@ -5,15 +5,15 @@
 
 Frame::Frame()
 {
-  position[ 0 ] = 0.0f;
-  position[ 1 ] = 0.0f;
-  position[ 2 ] = 0.0f;
-  forward[ 0 ] = 0.0f;
-  forward[ 1 ] = 0.0f;
-  forward[ 2 ] = 1.0f;
-  up[ 0 ] = 0.0f;
-  up[ 1 ] = 1.0f;
-  up[ 2 ] = 0.0f;
+  position[0] = 0.0f;
+  position[1] = 0.0f;
+  position[2] = 0.0f;
+  forward[0] = 0.0f;
+  forward[1] = 0.0f;
+  forward[2] = 1.0f;
+  up[0] = 0.0f;
+  up[1] = 1.0f;
+  up[2] = 0.0f;
 }
 
 Frame::Frame(Vector3 position, Vector3 forward, Vector3 up)
