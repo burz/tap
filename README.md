@@ -1,14 +1,14 @@
-taps - An OpenGL based 3D game engine
+tap - An OpenGL based 3D game engine
 =====================================
 
 Author: Anthony Burzillo
 
 ******
 
-tap is a 3D game engine I wrote during the summer of 2012. I started out programming the
+tap is a 3D game engine that I wrote during the summer of 2012. I started out programming the
 basic math libraries and made it about as far as a naive scene graph.
 
-# Executables
+## Executables
 
 Currently tap only works on linux (Only tested on Ubuntu; OSX compiles but does not
 display anything).
